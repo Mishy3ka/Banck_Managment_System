@@ -1,15 +1,12 @@
-#include <gtk/gtk.h>
+#include <stdio.h>
+#include "sqlite3.h"
 
-int main(int argc, char** argv){
+int main(){
 
-    gtk_init();
+    sqlite3* db;
+    int result = sqlite3_open("test_db", &db);
+    printf("result = %d\n", result);
+    sqlite3_close(db);
 
-    GtkWidget *window = gtk_window_new();
-
-    gtk_window_set_title (GTK_WINDOW (window), "METANIT.COM");
-    gtk_window_present (GTK_WINDOW (window));
-
-    while (g_list_model_get_n_items (gtk_window_get_toplevels ()) > 0)
-    g_main_context_iteration (NULL, TRUE);
     return 0;
 }
